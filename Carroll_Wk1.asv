@@ -1,0 +1,84 @@
+clc;
+%% Question 1
+% Part a)
+syms x y A;
+x'*A*y
+y'*A*x
+% Part b)
+x = [2; 1; -3]
+y = [-1; 2; -1]
+A = [-5 3 0;3 -1 -4;0 -4 2]
+x'*A*y
+y'*A*x
+clear
+%% Question 2
+syms u v w
+% Part a)
+A = [u u+v u+v+w]
+k = rank(A) % this should return the number one which implies that only one of the columns is linearly dependent, thus it is linearly INdependent
+% Part b)
+A = [u+2*v-w, u-2*v-w, 4*v]
+k = rank(A) % this should return the number one which implies that only one of the columns is linearly dependent, thus it is linearly INdependent
+% Part c)
+A = [u-v,v-w,w-u]
+k = rank(A) % this should return the number one which implies that only one of the columns is linearly dependent, thus it is linearly INdependent
+% Part d)
+A = [-u+v+w,u-v+w, -u+v-w]
+k = rank(A) % this should return the number one which implies that only one of the columns is linearly dependent, thus it is linearly INdependent
+clear
+%% Question 3
+% Part a)
+syms A
+syms M
+a = inv(M)*A*M
+[V,D] = eig(A)
+[V,D] = eig(a) % Yes they have the same eigenvectors
+% Part b)
+A = [.5 .5; .5 .5]
+a = [1 .5; 0 0]
+M = [1 0; 1 1]
+% Part c) - See attached
+% Part d)
+[V,D] = eig(A)
+[V,D] = eig(a)
+clear
+%% Question 4
+syms U S V A
+% Part a)
+[U,S,V] = svd(A)
+X*X'
+% Part b)
+A = [1 4; 2 8]
+[V,D] = eig(A'*A)
+[V,D] = eig(A*A')
+[U,S,V] = svd(A)
+% Part c) - The eigenvectors are different but that of A'*A have the same 
+% numbers just in a different pattern with V. U seems to be the eigenvalues
+% from A*A' but moved in the same pattern as with the vector of V.
+% The eigenvalues are the same.
+%% Question 5
+% Part a)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

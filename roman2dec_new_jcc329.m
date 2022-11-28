@@ -1,0 +1,34 @@
+function n=roman2dec_old_jcc329(x)
+% Jasen Carroll
+% 1/26/2011
+% References: mathworks.com and roma2num.m by François Beauducel
+error(nargchk(1,1,nargin))
+if ischar(x)
+	x = {x};
+end
+
+r = 'IVXLCDM';
+d = [1, 5, 10, 50, 100, 500, 1000]; % values of each Roman numerals
+
+n = zeros(size(x));
+
+for k = 1:numel(x)
+	nn = 0;
+	jj = x{k};
+	if all(ismember(jj,r))
+		for i = 1:length(jj)
+			v0 = d(findstr(r,jj(i)));
+			nn = nn + v0;
+			if i < length(jj)
+				% only difference than old is if the following char is 
+                % greater, subtract the value
+                if v0 < d(findstr(r,jj(i+1)))
+					nn = nn - 2*v0;
+				end
+			end
+        end
+        n(k) = nn;
+    end
+end
+
+

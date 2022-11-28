@@ -1,0 +1,33 @@
+function n=roman2dec_old_jcc329(x)
+% Jasen Carroll
+% 1/26/2011
+
+error(nargchk(1,1,nargin))
+if ischar(x)
+	x = {x};
+end
+
+r = 'IVXLCDM';
+a = [1, 5, 10, 50, 100, 500, 1000]; % values of each Roman numerals
+
+n = zeros(size(x));
+
+for k = 1:numel(x)
+	nn = 0;
+	ss = x{k};
+	if all(ismember(ss,r))
+		for i = 1:length(ss)
+			v0 = a(findstr(r,ss(i)));
+			nn = nn + v0;
+			if i < length(ss)
+				% if the following char is greater, subtract the value
+                if v0 < a(findstr(r,ss(i+1)))
+					nn = nn - 2*v0;
+				end
+			end
+        end
+        n(k) = nn;
+    end
+end
+
+
